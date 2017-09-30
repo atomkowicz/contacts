@@ -20,12 +20,18 @@ class ListContacts extends React.Component {
         });
     }
 
+    resetQuery = () => {
+        this.setState({
+            query: ''
+        })
+    }
+
     render() {
 
         let showingContacts;
 
-        const {contact, onContactDelete, contacts} = this.props;
-        const {query} = this.state;
+        const { onContactDelete, contacts } = this.props;
+        const { query } = this.state;
 
         if (query) {
             const match = new RegExp(escapeRegExp(query), "i");
@@ -45,6 +51,14 @@ class ListContacts extends React.Component {
                         value={query}
                         onChange={(event) => this.updateQuery(event.target.value)} />
                 </div>
+
+                {showingContacts.length !== contacts.length &&
+                    (<div className="showing-contacts">
+                        <span>Now showing {showingContacts.length} of {contacts.length} total</span>
+                        <button onClick={this.resetQuery}>Reset all</button>
+                    </div>
+                    )}
+
                 <ol className="contact-list">
                     {showingContacts.map((contact) => (
                         <li key={contact.id} className='contact-list-item'>
