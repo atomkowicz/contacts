@@ -30,7 +30,7 @@ class ListContacts extends React.Component {
 
         let showingContacts;
 
-        const { onContactDelete, contacts } = this.props;
+        const { onContactDelete, contacts, onNavigate } = this.props;
         const { query } = this.state;
 
         if (query) {
@@ -50,6 +50,11 @@ class ListContacts extends React.Component {
                         placeholder="Search contacts"
                         value={query}
                         onChange={(event) => this.updateQuery(event.target.value)} />
+                    <a href="#create"
+                        className="add-contact"
+                        onClick={() => onNavigate()}>
+                            Add contact
+                    </a>
                 </div>
 
                 {showingContacts.length !== contacts.length &&
