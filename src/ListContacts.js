@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 class ListContacts extends React.Component {
 
     static propTypes = {
-        contact: PropTypes.array.isRequired,
         onContactDelete: PropTypes.func.isRequired
     }
 
@@ -53,7 +52,7 @@ class ListContacts extends React.Component {
                         onChange={(event) => this.updateQuery(event.target.value)} />
                     <Link to="/create"
                         className="add-contact">
-                            Add contact
+                        Add contact
                     </Link>
                 </div>
 
@@ -81,27 +80,5 @@ class ListContacts extends React.Component {
     }
 
 }
-
-// const ListContacts = (props) => {
-//     console.log(props.contacts);
-//     return (
-//         <ol className="contact-list">
-//             {props.contacts.map((contact) => (
-//                 <li key={contact.id} className='contact-list-item'>
-//                     <div className='contact-avatar' style={{ backgroundImage: `url('${contact.avatarURL}')` }}></div>
-//                     <div className='contact-details'>
-//                         <p>{contact.name}</p>
-//                         <p>{contact.email}</p>
-//                     </div>
-//                     <button onClick={() => props.onContactDelete(contact)} className='contact-remove'>remove</button>
-//                 </li>
-//             ))}
-//         </ol>
-//     );
-// }
-// ListContacts.PropTypes = {
-//     contact: PropTypes.array.isRequired,
-//     onContactDelete: PropTypes.func.isRequired
-// }
 
 export default ListContacts;
